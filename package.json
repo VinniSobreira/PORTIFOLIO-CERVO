@@ -1,0 +1,10 @@
+{
+  "name": "cervo-digital",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site institucional da Cervo Digital, com formulário de contato salvo no Upstash Redis.",
+  "dependencies": {
+    "@upstash/redis": "^1.34.3"
+  }
+}

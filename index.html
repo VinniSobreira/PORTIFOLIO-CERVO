@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cervo Digital — Design e sistemas premium para empresas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'sans-serif'] },
+        colors: {
+          ink: { 950:'#0B0D10', 900:'#111318', 800:'#1A1D24', 700:'#2A2E38' },
+          paper: { 50:'#FAFAF9', 100:'#F4F3F1', 200:'#E8E6E1' },
+          blue: { 400:'#5B8DEF', 500:'#2F6FED', 600:'#1B4FCC' },
+        },
+        borderRadius: { '2xl':'20px', '3xl':'24px' },
+        boxShadow: {
+          soft: '0 2px 40px -8px rgba(17,19,24,0.08)',
+          card: '0 1px 2px rgba(17,19,24,0.04), 0 8px 24px -8px rgba(17,19,24,0.10)',
+          glow: '0 0 0 1px rgba(47,111,237,0.18), 0 20px 60px -20px rgba(47,111,237,0.35)',
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif; background:#FAFAF9; color:#111318;}
+  .glass{background:rgba(11,13,16,0.7); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);}
+  .mesh{
+    background:
+      radial-gradient(600px circle at 15% 20%, rgba(47,111,237,0.14), transparent 60%),
+      radial-gradient(500px circle at 85% 15%, rgba(17,19,24,0.06), transparent 55%);
+  }
+  .fade-up{opacity:0; transform:translateY(18px); transition:opacity 0.6s ease, transform 0.6s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .fade-up{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+  .icon{width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
+  details > summary{list-style:none; cursor:pointer;}
+  details > summary::-webkit-details-marker{display:none;}
+  details[open] .chev{transform:rotate(180deg);}
+  :focus-visible{outline:2px solid #C9982F; outline-offset:2px;}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 glass border-b border-white/10">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5">
+      <img src="assets/logo-cervo.png" alt="Cervo Digital" class="w-9 h-9 rounded-xl object-cover">
+      <span class="font-semibold text-lg tracking-tight text-white">Cervo Digital</span>
+    </a>
+    <div class="hidden md:flex items-center gap-9 text-sm font-medium text-white/65">
+      <a href="#beneficios" class="hover:text-white transition-colors">Benefícios</a>
+      <a href="#portfolio" class="hover:text-white transition-colors">Portfólio</a>
+      <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+      <a href="#depoimentos" class="hover:text-white transition-colors">Depoimentos</a>
+      <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+    </div>
+    <a href="#contato" class="hidden md:inline-flex items-center rounded-2xl bg-blue-500 text-white text-sm font-semibold px-5 py-2.5 hover:bg-blue-600 transition-colors">Agendar conversa</a>
+    <button id="menuBtn" class="md:hidden p-2 -mr-2 text-white" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-6 py-4 flex flex-col gap-4 text-sm font-medium bg-ink-950 text-white/80">
+    <a href="#beneficios">Benefícios</a>
+    <a href="#portfolio">Portfólio</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contato" class="inline-flex justify-center rounded-2xl bg-blue-500 text-white px-5 py-2.5">Agendar conversa</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="mesh bg-ink-950 pt-40 pb-24 md:pt-48 md:pb-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-16 items-center">
+    <div class="fade-up">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white shadow-card px-4 py-1.5 text-xs font-semibold text-ink-700 mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Sites que geram resultados
+      </span>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.08] mb-6 text-white">
+        Design e tecnologia que transformam operações em vantagem.
+      </h1>
+      <p class="text-lg text-white/65 max-w-md mb-10 leading-relaxed">
+        Sites, sistemas e produtos digitais construídos com padrão de agência premium — pensados para o dia a dia real da sua empresa, não só para a primeira impressão.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#contato" class="rounded-2xl bg-blue-500 text-white font-semibold px-7 py-3.5 hover:bg-blue-600 transition-colors">Agendar conversa</a>
+        <a href="#portfolio" class="rounded-2xl border border-white/20 text-white font-semibold px-7 py-3.5 hover:bg-white/10 transition-colors">Ver portfólio</a>
+      </div>
+    </div>
+    <div class="fade-up relative">
+      <div class="absolute -inset-6 bg-blue-400/10 rounded-3xl blur-2xl"></div>
+      <div class="relative rounded-3xl bg-white shadow-glow p-6 border border-ink-950/5">
+        <div class="flex items-center gap-1.5 mb-5">
+          <span class="w-2.5 h-2.5 rounded-full bg-ink-950/10"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-ink-950/10"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-ink-950/10"></span>
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-5">
+          <div class="col-span-2 rounded-2xl bg-paper-100 p-4">
+            <p class="text-xs text-ink-700 mb-1">Pedidos hoje</p>
+            <p class="text-2xl font-bold">1.284</p>
+            <div class="flex items-end gap-1.5 h-16 mt-4">
+              <div class="w-full bg-blue-400/70 rounded-t" style="height:40%"></div>
+              <div class="w-full bg-blue-400/70 rounded-t" style="height:65%"></div>
+              <div class="w-full bg-blue-500 rounded-t" style="height:90%"></div>
+              <div class="w-full bg-blue-400/70 rounded-t" style="height:55%"></div>
+              <div class="w-full bg-blue-400/70 rounded-t" style="height:75%"></div>
+            </div>
+          </div>
+          <div class="rounded-2xl bg-ink-950 text-white p-4 flex flex-col justify-between">
+            <p class="text-xs text-white/60">Entregas</p>
+            <p class="text-2xl font-bold">98%</p>
+          </div>
+        </div>
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between rounded-xl bg-paper-100 px-4 py-3 text-sm">
+            <span>Agendamento confirmado</span>
+            <span class="text-ink-700">agora</span>
+          </div>
+          <div class="flex items-center justify-between rounded-xl bg-paper-100 px-4 py-3 text-sm">
+            <span>Novo colaborador cadastrado</span>
+            <span class="text-ink-700">2 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section id="beneficios" class="py-24 border-t border-ink-950/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-16 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Por que empresas escolhem a Cervo</h2>
+      <p class="text-ink-700 text-lg leading-relaxed">Cada entrega passa pelos mesmos quatro princípios, do primeiro rascunho ao sistema em produção.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="fade-up rounded-3xl border border-ink-950/8 p-7 hover:shadow-card transition-shadow">
+        <div class="w-11 h-11 rounded-2xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-600">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg mb-2">Entrega rápida</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Sprints com escopo claro e prazos que a gente cumpre — sem enrolação nem retrabalho.</p>
+      </div>
+      <div class="fade-up rounded-3xl border border-ink-950/8 p-7 hover:shadow-card transition-shadow">
+        <div class="w-11 h-11 rounded-2xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-600">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1M3 12h3m12 0h3M5.6 18.4l2.1-2.1m8.6-8.6 2.1-2.1"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg mb-2">Sistemas sob medida</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Construído em volta do seu processo real, não o contrário — sem forçar sua rotina num template.</p>
+      </div>
+      <div class="fade-up rounded-3xl border border-ink-950/8 p-7 hover:shadow-card transition-shadow">
+        <div class="w-11 h-11 rounded-2xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-600">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg mb-2">Suporte contínuo</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Acompanhamento depois da entrega, com ajustes e evolução conforme sua empresa cresce.</p>
+      </div>
+      <div class="fade-up rounded-3xl border border-ink-950/8 p-7 hover:shadow-card transition-shadow">
+        <div class="w-11 h-11 rounded-2xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-600">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg mb-2">Design que converte</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Interfaces pensadas para resultado — cada tela existe para gerar uma ação, não só para parecer bonita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFÓLIO -->
+<section id="portfolio" class="py-24 bg-paper-100 border-t border-ink-950/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-16 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Portfólio</h2>
+      <p class="text-ink-700 text-lg leading-relaxed">Demonstrações completas, rodando em endereço próprio — não são apenas imagens estáticas.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <a href="https://lp.cervodigital.com.br" target="_blank" rel="noopener" class="fade-up group rounded-3xl bg-white border border-ink-950/8 p-8 hover:shadow-glow transition-shadow">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-11 h-11 rounded-2xl bg-ink-950 flex items-center justify-center text-white">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg>
+          </div>
+          <span class="text-sm font-medium text-ink-700 group-hover:text-ink-950 transition-colors">Ver demonstração</span>
+        </div>
+        <h3 class="font-semibold text-xl mb-2">Landing Page</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Página de captação feita para converter visita em contato, com copy direta e formulário sem fricção.</p>
+      </a>
+
+      <a href="https://rh.cervodigital.com.br" target="_blank" rel="noopener" class="fade-up group rounded-3xl bg-white border border-ink-950/8 p-8 hover:shadow-glow transition-shadow">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-11 h-11 rounded-2xl bg-ink-950 flex items-center justify-center text-white">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5"/></svg>
+          </div>
+          <span class="text-sm font-medium text-ink-700 group-hover:text-ink-950 transition-colors">Ver demonstração</span>
+        </div>
+        <h3 class="font-semibold text-xl mb-2">Sistema de RH</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Funcionários, férias e documentos organizados num painel só, com histórico sempre acessível.</p>
+      </a>
+
+      <a href="https://logistica.cervodigital.com.br" target="_blank" rel="noopener" class="fade-up group rounded-3xl bg-white border border-ink-950/8 p-8 hover:shadow-glow transition-shadow">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-11 h-11 rounded-2xl bg-ink-950 flex items-center justify-center text-white">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5Z"/><path d="M3 9v6l9 5 9-5V9"/></svg>
+          </div>
+          <span class="text-sm font-medium text-ink-700 group-hover:text-ink-950 transition-colors">Ver demonstração</span>
+        </div>
+        <h3 class="font-semibold text-xl mb-2">Logística</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Pedidos, estoque e entregas com visão em tempo real de onde o processo está travando.</p>
+      </a>
+
+      <a href="https://agenda.cervodigital.com.br" target="_blank" rel="noopener" class="fade-up group rounded-3xl bg-white border border-ink-950/8 p-8 hover:shadow-glow transition-shadow">
+        <div class="flex items-center justify-between mb-6">
+          <div class="w-11 h-11 rounded-2xl bg-ink-950 flex items-center justify-center text-white">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+          </div>
+          <span class="text-sm font-medium text-ink-700 group-hover:text-ink-950 transition-colors">Ver demonstração</span>
+        </div>
+        <h3 class="font-semibold text-xl mb-2">Agendamentos</h3>
+        <p class="text-ink-700 text-sm leading-relaxed">Agenda online integrada ao WhatsApp, com confirmação automática pro cliente final.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="py-24 border-t border-ink-950/5">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-16 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Serviços</h2>
+      <p class="text-ink-700 text-lg leading-relaxed">O ponto de partida é sempre o seu processo — esses são os formatos mais comuns de entrega.</p>
+    </div>
+    <div class="divide-y divide-ink-950/8 border-y border-ink-950/8">
+      <div class="fade-up grid md:grid-cols-12 gap-4 py-8 items-start">
+        <h3 class="md:col-span-3 font-semibold text-lg">Landing Pages</h3>
+        <p class="md:col-span-7 text-ink-700 leading-relaxed">Páginas de conversão para campanhas e captação de leads, com copy pensada para o seu público.</p>
+        <span class="md:col-span-2 md:text-right text-sm text-ink-700">A partir de 5 dias</span>
+      </div>
+      <div class="fade-up grid md:grid-cols-12 gap-4 py-8 items-start">
+        <h3 class="md:col-span-3 font-semibold text-lg">RH</h3>
+        <p class="md:col-span-7 text-ink-700 leading-relaxed">Gestão de funcionários, férias, documentos e admissões acessível de qualquer lugar.</p>
+        <span class="md:col-span-2 md:text-right text-sm text-ink-700">A partir de 3 semanas</span>
+      </div>
+      <div class="fade-up grid md:grid-cols-12 gap-4 py-8 items-start">
+        <h3 class="md:col-span-3 font-semibold text-lg">Logística</h3>
+        <p class="md:col-span-7 text-ink-700 leading-relaxed">Controle de pedidos, estoque e entregas com relatórios de onde o processo trava.</p>
+        <span class="md:col-span-2 md:text-right text-sm text-ink-700">A partir de 4 semanas</span>
+      </div>
+      <div class="fade-up grid md:grid-cols-12 gap-4 py-8 items-start">
+        <h3 class="md:col-span-3 font-semibold text-lg">Orçamentos e Agendamentos</h3>
+        <p class="md:col-span-7 text-ink-700 leading-relaxed">Geração de orçamentos e agenda integrados, reduzindo o vai-e-vem manual com o cliente.</p>
+        <span class="md:col-span-2 md:text-right text-sm text-ink-700">A partir de 2 semanas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos" class="py-24 bg-ink-950 text-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-16 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">O que dizem depois de usar</h2>
+      <p class="text-white/60 text-lg leading-relaxed">Depoimentos de exemplo — substitua pelos relatos reais dos seus clientes.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="fade-up rounded-3xl bg-white/5 border border-white/10 p-8">
+        <p class="text-lg leading-relaxed mb-6">"A gente parou de controlar férias por planilha. O sistema de RH virou parte da rotina em menos de uma semana."</p>
+        <p class="font-semibold">Marina Souza</p>
+        <p class="text-white/50 text-sm">Diretora de Operações</p>
+      </div>
+      <div class="fade-up rounded-3xl bg-white/5 border border-white/10 p-8">
+        <p class="text-lg leading-relaxed mb-6">"O agendamento integrado ao WhatsApp reduziu o retrabalho da recepção quase pela metade."</p>
+        <p class="font-semibold">Rafael Nogueira</p>
+        <p class="text-white/50 text-sm">Sócio-gerente</p>
+      </div>
+      <div class="fade-up rounded-3xl bg-white/5 border border-white/10 p-8">
+        <p class="text-lg leading-relaxed mb-6">"Enxergar estoque e entregas em tempo real mudou como planejamos a semana inteira."</p>
+        <p class="font-semibold">Camila Ferraz</p>
+        <p class="text-white/50 text-sm">Coordenadora de Logística</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 border-t border-ink-950/5">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10">
+    <div class="mb-14 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Perguntas frequentes</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="fade-up group rounded-2xl border border-ink-950/8 p-6 open:shadow-card">
+        <summary class="flex items-center justify-between font-semibold">
+          Quanto tempo leva um projeto?
+          <svg class="icon chev transition-transform" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="text-ink-700 mt-4 leading-relaxed">Depende do escopo: uma landing page sai em cerca de 5 dias úteis; sistemas como RH ou logística costumam levar de 3 a 6 semanas.</p>
+      </details>
+      <details class="fade-up group rounded-2xl border border-ink-950/8 p-6 open:shadow-card">
+        <summary class="flex items-center justify-between font-semibold">
+          Vocês atendem qualquer segmento?
+          <svg class="icon chev transition-transform" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="text-ink-700 mt-4 leading-relaxed">Sim. O que muda de segmento para segmento é o processo por trás do sistema — a estrutura técnica se adapta a isso.</p>
+      </details>
+      <details class="fade-up group rounded-2xl border border-ink-950/8 p-6 open:shadow-card">
+        <summary class="flex items-center justify-between font-semibold">
+          Como funciona o suporte após a entrega?
+          <svg class="icon chev transition-transform" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="text-ink-700 mt-4 leading-relaxed">Ficamos disponíveis para ajustes e evolução do sistema conforme sua empresa muda — o suporte não termina na entrega.</p>
+      </details>
+      <details class="fade-up group rounded-2xl border border-ink-950/8 p-6 open:shadow-card">
+        <summary class="flex items-center justify-between font-semibold">
+          Posso pedir alterações depois de ver a demonstração?
+          <svg class="icon chev transition-transform" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="text-ink-700 mt-4 leading-relaxed">Sim, a demonstração é o ponto de partida para ajustar o sistema à sua realidade antes da entrega final.</p>
+      </details>
+      <details class="fade-up group rounded-2xl border border-ink-950/8 p-6 open:shadow-card">
+        <summary class="flex items-center justify-between font-semibold">
+          Como começar?
+          <svg class="icon chev transition-transform" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p class="text-ink-700 mt-4 leading-relaxed">Chame no WhatsApp ou preencha o formulário de contato contando o que sua empresa precisa — respondemos no mesmo dia.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO / CTA -->
+<section id="contato" class="mesh bg-ink-950 text-white py-24 border-t border-white/10">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+    <div class="max-w-xl mb-14 fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Vamos conversar sobre o seu projeto?</h2>
+      <p class="text-white/65 text-lg leading-relaxed">Conte o que sua empresa precisa — a gente responde no mesmo dia com um caminho possível.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="fade-up rounded-3xl bg-white/5 border border-white/10 p-8 flex flex-col gap-5 h-fit">
+        <h3 class="font-semibold text-xl">Prefere resolver rápido?</h3>
+        <p class="text-white/65 leading-relaxed">Chame no WhatsApp e conta o que sua empresa precisa.</p>
+        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Cervo%20Digital" target="_blank" rel="noopener" class="inline-flex justify-center items-center rounded-2xl bg-[#25D366] text-ink-950 font-semibold px-7 py-3.5 hover:brightness-95 transition">Chamar no WhatsApp</a>
+        <a href="mailto:contato@cervodigital.com.br" class="inline-flex justify-center items-center rounded-2xl border border-white/20 text-white font-semibold px-7 py-3.5 hover:bg-white/10 transition">Enviar e-mail</a>
+      </div>
+      <form id="contactForm" class="fade-up rounded-3xl bg-white/5 border border-white/10 p-8 flex flex-col gap-4">
+        <div class="flex flex-col gap-1.5">
+          <label for="nome" class="text-sm text-white/60">Nome</label>
+          <input id="nome" name="nome" type="text" required class="rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder-white/30 focus:border-blue-400 outline-none transition-colors">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="email" class="text-sm text-white/60">E-mail</label>
+          <input id="email" name="email" type="email" required class="rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder-white/30 focus:border-blue-400 outline-none transition-colors">
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="mensagem" class="text-sm text-white/60">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" required rows="4" placeholder="Conte um pouco sobre o que sua empresa precisa..." class="rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder-white/30 focus:border-blue-400 outline-none transition-colors resize-y"></textarea>
+        </div>
+        <button type="submit" id="contactSubmit" class="rounded-2xl bg-blue-500 hover:bg-blue-600 transition-colors text-white font-semibold px-7 py-3.5 self-start">Enviar mensagem</button>
+        <p id="contactStatus" class="text-sm" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink-950 text-white/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-4 gap-10 mb-14">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <img src="assets/logo-cervo.png" alt="Cervo Digital" class="w-9 h-9 rounded-xl object-cover">
+          <p class="text-white font-semibold text-lg">Cervo Digital</p>
+        </div>
+        <p class="text-sm leading-relaxed max-w-xs">Sites que geram resultados — sistemas sob medida para empresas que precisam de tecnologia que realmente funciona no dia a dia.</p>
+      </div>
+      <div>
+        <p class="text-white font-medium mb-4 text-sm">Navegação</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#beneficios" class="hover:text-white transition-colors">Benefícios</a></li>
+          <li><a href="#portfolio" class="hover:text-white transition-colors">Portfólio</a></li>
+          <li><a href="#servicos" class="hover:text-white transition-colors">Serviços</a></li>
+          <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white font-medium mb-4 text-sm">Serviços</p>
+        <ul class="space-y-2.5 text-sm">
+          <li>Landing Pages</li>
+          <li>RH</li>
+          <li>Logística</li>
+          <li>Orçamentos e Agendamentos</li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-white font-medium mb-4 text-sm">Contato</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="https://wa.me/5500000000000" class="hover:text-white transition-colors">WhatsApp</a></li>
+          <li><a href="mailto:contato@cervodigital.com.br" class="hover:text-white transition-colors">contato@cervodigital.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-white/40">
+      <span>© 2026 Cervo Digital. Todos os direitos reservados.</span>
+      <span>Feito com Tailwind CSS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', String(isHidden));
+  });
+
+  // scroll reveal
+  var els = document.querySelectorAll('.fade-up');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // formulário de contato -> /api/contato (Upstash)
+  var contactForm = document.getElementById('contactForm');
+  var contactStatus = document.getElementById('contactStatus');
+  var contactSubmit = document.getElementById('contactSubmit');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      contactSubmit.disabled = true;
+      contactSubmit.textContent = 'Enviando...';
+      contactStatus.textContent = '';
+      contactStatus.className = 'text-sm';
+
+      var payload = {
+        nome: document.getElementById('nome').value,
+        email: document.getElementById('email').value,
+        mensagem: document.getElementById('mensagem').value
+      };
+
+      fetch('/api/contato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (result) {
+          if (result.ok && result.data.ok) {
+            contactStatus.textContent = 'Mensagem enviada! A gente responde em breve.';
+            contactStatus.className = 'text-sm text-blue-400';
+            contactForm.reset();
+          } else {
+            throw new Error(result.data.error || 'Erro ao enviar');
+          }
+        })
+        .catch(function () {
+          contactStatus.textContent = 'Não deu pra enviar agora. Tenta de novo ou chama no WhatsApp.';
+          contactStatus.className = 'text-sm text-red-400';
+        })
+        .finally(function () {
+          contactSubmit.disabled = false;
+          contactSubmit.textContent = 'Enviar mensagem';
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
