@@ -5,12 +5,16 @@ que salva os leads no Upstash Redis através de uma função serverless da Verce
 
 ```
 cervo-digital/
-├── index.html          → o site em si
+├── index.html          → o site principal
 ├── assets/
 │   └── logo-cervo.png  → sua logo
 ├── api/
 │   ├── contato.js       → recebe o formulário e grava no Upstash
 │   └── leads.js         → lista os leads salvos (protegido por token)
+├── demos/
+│   ├── rh/index.html            → demo do sistema de RH
+│   ├── logistica/index.html     → demo do sistema de Logística
+│   └── agendamentos/index.html  → demo do sistema de Agendamentos
 ├── package.json
 ├── .env.example
 └── .gitignore
@@ -73,6 +77,35 @@ aponte o DNS conforme as instruções que a própria Vercel mostra.
 Cada subdomínio de demonstração (`rh.cervodigital.com.br`,
 `logistica.cervodigital.com.br`, `agenda.cervodigital.com.br`) pode ser
 um projeto Vercel separado, adicionado do mesmo jeito.
+
+## 6. Demonstrações internas (RH, Logística, Agendamentos)
+
+As três pastas em `demos/` são mini-aplicações completas, com dados de
+exemplo, prontas pra rodar nos subdomínios:
+
+```
+demos/
+├── rh/index.html            → rh.cervodigital.com.br
+├── logistica/index.html     → logistica.cervodigital.com.br
+└── agendamentos/index.html  → agenda.cervodigital.com.br
+```
+
+Cada uma é independente (sidebar, abas, tabelas com busca, dados fake).
+Pra publicar cada uma no seu próprio subdomínio na Vercel:
+
+1. Crie um novo projeto na Vercel a partir do **mesmo repositório**.
+2. Em **Settings → General → Root Directory**, aponte para a pasta certa
+   (ex: `demos/rh`).
+3. Depois do deploy, vá em **Settings → Domains** e adicione o subdomínio
+   correspondente (ex: `rh.cervodigital.com.br`).
+
+Repita para as outras duas. No fim você terá 4 projetos Vercel apontando
+pro mesmo repositório GitHub: o site principal e as 3 demos.
+
+As demos ainda não têm backend — os dados são fixos, só pra demonstração
+visual. Se algum cliente fechar contrato pra um desses sistemas de
+verdade, aí sim vale ligar num banco de dados real (dá pra usar o mesmo
+Upstash).
 
 ## Antes de publicar de verdade
 

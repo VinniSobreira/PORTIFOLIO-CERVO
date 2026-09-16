@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logística — Cervo Digital (demonstração)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { sans: ['Inter','sans-serif'] },
+      colors: {
+        ink: { 950:'#0B0D10', 900:'#111318', 800:'#1A1D24', 700:'#2A2E38' },
+        paper: { 50:'#FAFAF9', 100:'#F4F3F1', 200:'#E8E6E1' },
+        blue: { 400:'#5B8DEF', 500:'#2F6FED', 600:'#1B4FCC' },
+      },
+      borderRadius: { '2xl':'20px', '3xl':'24px' },
+      boxShadow: { card:'0 1px 2px rgba(17,19,24,0.04), 0 8px 24px -8px rgba(17,19,24,0.10)' },
+    }}
+  }
+</script>
+<style>
+  body{font-family:'Inter',sans-serif; background:#FAFAF9; color:#111318;}
+  .icon{width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  .tab-panel{display:none;} .tab-panel.active{display:block;}
+  .navlink.active{background:rgba(255,255,255,0.08); color:#fff;}
+  .navlink.active .icon{color:#5B8DEF;}
+  ::-webkit-scrollbar{width:8px; height:8px;} ::-webkit-scrollbar-thumb{background:#E8E6E1; border-radius:8px;}
+</style>
+</head>
+<body class="antialiased">
+
+<div class="min-h-screen md:flex">
+
+  <aside class="bg-ink-950 text-white/70 md:w-64 md:min-h-screen flex md:flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-2.5 px-6 py-5 border-b border-white/10">
+        <img src="../../assets/logo-cervo.png" alt="Cervo Digital" class="w-8 h-8 rounded-lg object-cover">
+        <div>
+          <p class="text-white font-semibold text-sm leading-tight">Cervo Logística</p>
+          <p class="text-white/40 text-xs leading-tight">demonstração</p>
+        </div>
+      </div>
+      <nav class="px-3 py-4 space-y-1 text-sm font-medium">
+        <button data-tab="dashboard" class="navlink active w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg>
+          Dashboard
+        </button>
+        <button data-tab="pedidos" class="navlink w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5Z"/><path d="M3 9v6l9 5 9-5V9"/></svg>
+          Pedidos
+        </button>
+        <button data-tab="estoque" class="navlink w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="1.5"/><path d="M3 11h18M8 7V4h8v3"/></svg>
+          Estoque
+        </button>
+        <button data-tab="entregas" class="navlink w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="1" y="8" width="13" height="9" rx="1.2"/><path d="M14 11h4l4 3.2V17h-8z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17.5" cy="19" r="1.6"/></svg>
+          Entregas
+        </button>
+      </nav>
+    </div>
+    <div class="px-6 py-5 border-t border-white/10 text-xs">
+      <a href="https://cervodigital.com.br" class="hover:text-white transition-colors">← Voltar ao site da Cervo Digital</a>
+    </div>
+  </aside>
+
+  <main class="flex-1 min-w-0">
+    <header class="bg-white border-b border-ink-950/8 px-6 md:px-10 h-16 flex items-center justify-between sticky top-0 z-10">
+      <p class="font-semibold" id="pageTitle">Dashboard</p>
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-xs text-ink-700 bg-paper-100 px-3 py-1.5 rounded-full">Dados de demonstração</span>
+        <div class="w-8 h-8 rounded-full bg-blue-500 text-white text-xs font-semibold flex items-center justify-center">CF</div>
+      </div>
+    </header>
+
+    <div class="p-6 md:p-10">
+
+      <!-- DASHBOARD -->
+      <section class="tab-panel active" id="tab-dashboard">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+            <p class="text-xs text-ink-700 mb-2">Pedidos hoje</p>
+            <p class="text-3xl font-bold">1.284</p>
+          </div>
+          <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+            <p class="text-xs text-ink-700 mb-2">Em trânsito</p>
+            <p class="text-3xl font-bold">96</p>
+          </div>
+          <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+            <p class="text-xs text-ink-700 mb-2">Itens com estoque baixo</p>
+            <p class="text-3xl font-bold text-blue-600">7</p>
+          </div>
+          <div class="bg-ink-950 text-white rounded-3xl p-6">
+            <p class="text-xs text-white/60 mb-2">Entregas no prazo</p>
+            <p class="text-3xl font-bold">98%</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+          <p class="font-semibold mb-5">Pedidos por dia — últimos 7 dias</p>
+          <div class="flex items-end gap-3 h-40">
+            <div class="flex-1 bg-blue-500/25 rounded-t-lg" style="height:55%"></div>
+            <div class="flex-1 bg-blue-500/25 rounded-t-lg" style="height:70%"></div>
+            <div class="flex-1 bg-blue-500/25 rounded-t-lg" style="height:48%"></div>
+            <div class="flex-1 bg-blue-500/25 rounded-t-lg" style="height:82%"></div>
+            <div class="flex-1 bg-blue-500 rounded-t-lg" style="height:100%"></div>
+            <div class="flex-1 bg-blue-500/25 rounded-t-lg" style="height:64%"></div>
+            <div class="flex-1 bg-blue-500/25 rounded-t-lg" style="height:58%"></div>
+          </div>
+          <div class="flex gap-3 text-xs text-ink-700 mt-2">
+            <span class="flex-1 text-center">Seg</span><span class="flex-1 text-center">Ter</span><span class="flex-1 text-center">Qua</span><span class="flex-1 text-center">Qui</span><span class="flex-1 text-center">Sex</span><span class="flex-1 text-center">Sáb</span><span class="flex-1 text-center">Dom</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PEDIDOS -->
+      <section class="tab-panel" id="tab-pedidos">
+        <div class="flex items-center justify-between mb-5 gap-3 flex-wrap">
+          <input id="searchPedido" type="text" placeholder="Buscar por cliente ou nº do pedido..." class="rounded-xl border border-ink-950/10 px-4 py-2.5 text-sm w-full max-w-xs focus:border-blue-400 outline-none">
+          <button class="rounded-xl bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 transition-colors">+ Novo pedido</button>
+        </div>
+        <div class="bg-white rounded-3xl border border-ink-950/8 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-paper-100 text-ink-700 text-left">
+              <tr><th class="px-5 py-3 font-medium">Pedido</th><th class="px-5 py-3 font-medium">Cliente</th><th class="px-5 py-3 font-medium">Itens</th><th class="px-5 py-3 font-medium">Valor</th><th class="px-5 py-3 font-medium">Status</th></tr>
+            </thead>
+            <tbody id="pedidoTableBody" class="divide-y divide-ink-950/5"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ESTOQUE -->
+      <section class="tab-panel" id="tab-estoque">
+        <div class="bg-white rounded-3xl border border-ink-950/8 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-paper-100 text-ink-700 text-left">
+              <tr><th class="px-5 py-3 font-medium">Produto</th><th class="px-5 py-3 font-medium">SKU</th><th class="px-5 py-3 font-medium">Em estoque</th><th class="px-5 py-3 font-medium">Nível</th></tr>
+            </thead>
+            <tbody class="divide-y divide-ink-950/5">
+              <tr><td class="px-5 py-3.5 font-medium">Caixa de papelão M</td><td class="px-5 py-3.5 text-ink-700">CX-M-002</td><td class="px-5 py-3.5">1.240</td><td class="px-5 py-3.5"><div class="w-full max-w-[140px] h-2 rounded-full bg-paper-200"><div class="h-2 rounded-full bg-blue-500" style="width:82%"></div></div></td></tr>
+              <tr><td class="px-5 py-3.5 font-medium">Fita adesiva reforçada</td><td class="px-5 py-3.5 text-ink-700">FT-018</td><td class="px-5 py-3.5">86</td><td class="px-5 py-3.5"><div class="w-full max-w-[140px] h-2 rounded-full bg-paper-200"><div class="h-2 rounded-full bg-red-500" style="width:18%"></div></div></td></tr>
+              <tr><td class="px-5 py-3.5 font-medium">Etiqueta térmica</td><td class="px-5 py-3.5 text-ink-700">ET-104</td><td class="px-5 py-3.5">3.400</td><td class="px-5 py-3.5"><div class="w-full max-w-[140px] h-2 rounded-full bg-paper-200"><div class="h-2 rounded-full bg-blue-500" style="width:95%"></div></div></td></tr>
+              <tr><td class="px-5 py-3.5 font-medium">Plástico bolha (rolo)</td><td class="px-5 py-3.5 text-ink-700">PB-221</td><td class="px-5 py-3.5">41</td><td class="px-5 py-3.5"><div class="w-full max-w-[140px] h-2 rounded-full bg-paper-200"><div class="h-2 rounded-full bg-red-500" style="width:22%"></div></div></td></tr>
+              <tr><td class="px-5 py-3.5 font-medium">Caixa de papelão P</td><td class="px-5 py-3.5 text-ink-700">CX-P-001</td><td class="px-5 py-3.5">2.010</td><td class="px-5 py-3.5"><div class="w-full max-w-[140px] h-2 rounded-full bg-paper-200"><div class="h-2 rounded-full bg-blue-500" style="width:88%"></div></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ENTREGAS -->
+      <section class="tab-panel" id="tab-entregas">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-medium text-sm">Pedido #4821 — Recife/PE</p>
+              <span class="text-xs font-medium bg-blue-500/10 text-blue-600 px-2.5 py-1 rounded-full">Em rota</span>
+            </div>
+            <p class="text-xs text-ink-700">Previsão de entrega: hoje, até 18h</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-medium text-sm">Pedido #4819 — Belo Horizonte/MG</p>
+              <span class="text-xs font-medium bg-ink-950/5 text-ink-700 px-2.5 py-1 rounded-full">Entregue</span>
+            </div>
+            <p class="text-xs text-ink-700">Entregue ontem às 14h22</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-medium text-sm">Pedido #4825 — Curitiba/PR</p>
+              <span class="text-xs font-medium bg-red-500/10 text-red-600 px-2.5 py-1 rounded-full">Atrasado</span>
+            </div>
+            <p class="text-xs text-ink-700">Previsão original: ontem</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5">
+            <div class="flex items-center justify-between mb-2">
+              <p class="font-medium text-sm">Pedido #4830 — Salvador/BA</p>
+              <span class="text-xs font-medium bg-blue-500/10 text-blue-600 px-2.5 py-1 rounded-full">Em rota</span>
+            </div>
+            <p class="text-xs text-ink-700">Previsão de entrega: amanhã</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  var pedidos = [
+    {id:'#4821', cliente:'Loja Nova Era', itens:3, valor:'R$ 482,00', status:'Em rota'},
+    {id:'#4822', cliente:'Distribuidora Vale Verde', itens:12, valor:'R$ 2.140,00', status:'Separando'},
+    {id:'#4823', cliente:'Mercado Bom Preço', itens:7, valor:'R$ 918,00', status:'Confirmado'},
+    {id:'#4824', cliente:'Cliente final — J. Oliveira', itens:1, valor:'R$ 89,90', status:'Em rota'},
+    {id:'#4825', cliente:'Ateliê Fio & Cor', itens:4, valor:'R$ 356,00', status:'Atrasado'},
+    {id:'#4826', cliente:'Papelaria Central', itens:9, valor:'R$ 1.204,00', status:'Confirmado'},
+  ];
+  var statusStyle = {
+    'Em rota':'bg-blue-500/10 text-blue-600',
+    'Separando':'bg-ink-950/5 text-ink-700',
+    'Confirmado':'bg-ink-950/5 text-ink-700',
+    'Atrasado':'bg-red-500/10 text-red-600'
+  };
+  function renderPedidos(filter){
+    var body = document.getElementById('pedidoTableBody');
+    body.innerHTML = '';
+    pedidos
+      .filter(function(p){ var f=(filter||'').toLowerCase(); return !f || p.cliente.toLowerCase().indexOf(f)!==-1 || p.id.toLowerCase().indexOf(f)!==-1; })
+      .forEach(function(p){
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td class="px-5 py-3.5 font-medium">'+p.id+'</td>'+
+          '<td class="px-5 py-3.5 text-ink-700">'+p.cliente+'</td>'+
+          '<td class="px-5 py-3.5 text-ink-700">'+p.itens+'</td>'+
+          '<td class="px-5 py-3.5 text-ink-700">'+p.valor+'</td>'+
+          '<td class="px-5 py-3.5"><span class="text-xs font-medium '+statusStyle[p.status]+' px-2.5 py-1 rounded-full">'+p.status+'</span></td>';
+        body.appendChild(tr);
+      });
+  }
+  renderPedidos('');
+  document.getElementById('searchPedido').addEventListener('input', function(e){ renderPedidos(e.target.value); });
+
+  var titles = {dashboard:'Dashboard', pedidos:'Pedidos', estoque:'Estoque', entregas:'Entregas'};
+  document.querySelectorAll('.navlink').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.navlink').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      document.getElementById('pageTitle').textContent = titles[btn.dataset.tab];
+    });
+  });
+</script>
+
+</body>
+</html>

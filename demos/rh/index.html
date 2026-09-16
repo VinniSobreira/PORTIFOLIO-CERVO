@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RH — Cervo Digital (demonstração)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: { extend: {
+      fontFamily: { sans: ['Inter','sans-serif'] },
+      colors: {
+        ink: { 950:'#0B0D10', 900:'#111318', 800:'#1A1D24', 700:'#2A2E38' },
+        paper: { 50:'#FAFAF9', 100:'#F4F3F1', 200:'#E8E6E1' },
+        blue: { 400:'#5B8DEF', 500:'#2F6FED', 600:'#1B4FCC' },
+      },
+      borderRadius: { '2xl':'20px', '3xl':'24px' },
+      boxShadow: { card:'0 1px 2px rgba(17,19,24,0.04), 0 8px 24px -8px rgba(17,19,24,0.10)' },
+    }}
+  }
+</script>
+<style>
+  body{font-family:'Inter',sans-serif; background:#FAFAF9; color:#111318;}
+  .icon{width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
+  .tab-panel{display:none;} .tab-panel.active{display:block;}
+  .navlink.active{background:rgba(255,255,255,0.08); color:#fff;}
+  .navlink.active .icon{color:#5B8DEF;}
+  ::-webkit-scrollbar{width:8px; height:8px;} ::-webkit-scrollbar-thumb{background:#E8E6E1; border-radius:8px;}
+</style>
+</head>
+<body class="antialiased">
+
+<div class="min-h-screen md:flex">
+
+  <!-- SIDEBAR -->
+  <aside class="bg-ink-950 text-white/70 md:w-64 md:min-h-screen flex md:flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-2.5 px-6 py-5 border-b border-white/10">
+        <img src="../../assets/logo-cervo.png" alt="Cervo Digital" class="w-8 h-8 rounded-lg object-cover">
+        <div>
+          <p class="text-white font-semibold text-sm leading-tight">Cervo RH</p>
+          <p class="text-white/40 text-xs leading-tight">demonstração</p>
+        </div>
+      </div>
+      <nav class="px-3 py-4 space-y-1 text-sm font-medium">
+        <button data-tab="dashboard" class="navlink active w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/></svg>
+          Dashboard
+        </button>
+        <button data-tab="funcionarios" class="navlink w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-4 3-6.5 6.5-6.5s6.5 2.5 6.5 6.5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15 13.3c2.8.4 4.8 2.4 4.8 5.7"/></svg>
+          Funcionários
+        </button>
+        <button data-tab="ferias" class="navlink w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          Férias
+        </button>
+        <button data-tab="documentos" class="navlink w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/></svg>
+          Documentos
+        </button>
+      </nav>
+    </div>
+    <div class="px-6 py-5 border-t border-white/10 text-xs">
+      <a href="https://cervodigital.com.br" class="hover:text-white transition-colors">← Voltar ao site da Cervo Digital</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 min-w-0">
+    <header class="bg-white border-b border-ink-950/8 px-6 md:px-10 h-16 flex items-center justify-between sticky top-0 z-10">
+      <div>
+        <p class="font-semibold" id="pageTitle">Dashboard</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-xs text-ink-700 bg-paper-100 px-3 py-1.5 rounded-full">Dados de demonstração</span>
+        <div class="w-8 h-8 rounded-full bg-blue-500 text-white text-xs font-semibold flex items-center justify-center">AB</div>
+      </div>
+    </header>
+
+    <div class="p-6 md:p-10">
+
+      <!-- DASHBOARD -->
+      <section class="tab-panel active" id="tab-dashboard">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+            <p class="text-xs text-ink-700 mb-2">Funcionários ativos</p>
+            <p class="text-3xl font-bold">42</p>
+          </div>
+          <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+            <p class="text-xs text-ink-700 mb-2">Em férias agora</p>
+            <p class="text-3xl font-bold">3</p>
+          </div>
+          <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+            <p class="text-xs text-ink-700 mb-2">Documentos pendentes</p>
+            <p class="text-3xl font-bold text-blue-600">5</p>
+          </div>
+          <div class="bg-ink-950 text-white rounded-3xl p-6">
+            <p class="text-xs text-white/60 mb-2">Admissões este mês</p>
+            <p class="text-3xl font-bold">2</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl border border-ink-950/8 p-6">
+          <p class="font-semibold mb-5">Próximas férias</p>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between text-sm py-2.5 border-b border-ink-950/5">
+              <span>Camila Ferraz — Logística</span><span class="text-ink-700">22 set a 05 out</span>
+            </div>
+            <div class="flex items-center justify-between text-sm py-2.5 border-b border-ink-950/5">
+              <span>Rafael Nogueira — Comercial</span><span class="text-ink-700">30 set a 10 out</span>
+            </div>
+            <div class="flex items-center justify-between text-sm py-2.5">
+              <span>Diego Martins — TI</span><span class="text-ink-700">06 out a 16 out</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FUNCIONÁRIOS -->
+      <section class="tab-panel" id="tab-funcionarios">
+        <div class="flex items-center justify-between mb-5 gap-3 flex-wrap">
+          <input id="searchFunc" type="text" placeholder="Buscar funcionário..." class="rounded-xl border border-ink-950/10 px-4 py-2.5 text-sm w-full max-w-xs focus:border-blue-400 outline-none">
+          <button class="rounded-xl bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 transition-colors">+ Novo funcionário</button>
+        </div>
+        <div class="bg-white rounded-3xl border border-ink-950/8 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-paper-100 text-ink-700 text-left">
+              <tr><th class="px-5 py-3 font-medium">Nome</th><th class="px-5 py-3 font-medium">Cargo</th><th class="px-5 py-3 font-medium">Departamento</th><th class="px-5 py-3 font-medium">Admissão</th><th class="px-5 py-3 font-medium">Status</th></tr>
+            </thead>
+            <tbody id="funcTableBody" class="divide-y divide-ink-950/5"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- FÉRIAS -->
+      <section class="tab-panel" id="tab-ferias">
+        <div class="bg-white rounded-3xl border border-ink-950/8 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-paper-100 text-ink-700 text-left">
+              <tr><th class="px-5 py-3 font-medium">Funcionário</th><th class="px-5 py-3 font-medium">Período</th><th class="px-5 py-3 font-medium">Dias</th><th class="px-5 py-3 font-medium">Status</th></tr>
+            </thead>
+            <tbody class="divide-y divide-ink-950/5">
+              <tr><td class="px-5 py-3.5">Camila Ferraz</td><td class="px-5 py-3.5">22/09 – 05/10</td><td class="px-5 py-3.5">14</td><td class="px-5 py-3.5"><span class="text-xs font-medium bg-blue-500/10 text-blue-600 px-2.5 py-1 rounded-full">Aprovada</span></td></tr>
+              <tr><td class="px-5 py-3.5">Rafael Nogueira</td><td class="px-5 py-3.5">30/09 – 10/10</td><td class="px-5 py-3.5">10</td><td class="px-5 py-3.5"><span class="text-xs font-medium bg-blue-500/10 text-blue-600 px-2.5 py-1 rounded-full">Aprovada</span></td></tr>
+              <tr><td class="px-5 py-3.5">Diego Martins</td><td class="px-5 py-3.5">06/10 – 16/10</td><td class="px-5 py-3.5">10</td><td class="px-5 py-3.5"><span class="text-xs font-medium bg-ink-950/5 text-ink-700 px-2.5 py-1 rounded-full">Em análise</span></td></tr>
+              <tr><td class="px-5 py-3.5">Marina Souza</td><td class="px-5 py-3.5">01/11 – 15/11</td><td class="px-5 py-3.5">14</td><td class="px-5 py-3.5"><span class="text-xs font-medium bg-ink-950/5 text-ink-700 px-2.5 py-1 rounded-full">Em análise</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- DOCUMENTOS -->
+      <section class="tab-panel" id="tab-documentos">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5 flex items-center justify-between">
+            <div><p class="font-medium text-sm">Contrato — Diego Martins</p><p class="text-xs text-ink-700">Enviado em 12/09</p></div>
+            <span class="text-xs font-medium bg-ink-950/5 text-ink-700 px-2.5 py-1 rounded-full">Pendente assinatura</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5 flex items-center justify-between">
+            <div><p class="font-medium text-sm">Atestado — Ana Beatriz</p><p class="text-xs text-ink-700">Enviado em 10/09</p></div>
+            <span class="text-xs font-medium bg-blue-500/10 text-blue-600 px-2.5 py-1 rounded-full">Aprovado</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5 flex items-center justify-between">
+            <div><p class="font-medium text-sm">Exame admissional — Bruna Lima</p><p class="text-xs text-ink-700">Enviado em 08/09</p></div>
+            <span class="text-xs font-medium bg-ink-950/5 text-ink-700 px-2.5 py-1 rounded-full">Pendente revisão</span>
+          </div>
+          <div class="bg-white rounded-2xl border border-ink-950/8 p-5 flex items-center justify-between">
+            <div><p class="font-medium text-sm">Rescisão — Paulo Ricci</p><p class="text-xs text-ink-700">Enviado em 03/09</p></div>
+            <span class="text-xs font-medium bg-blue-500/10 text-blue-600 px-2.5 py-1 rounded-full">Aprovado</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  var funcionarios = [
+    {nome:'Ana Beatriz Ramos', cargo:'Gerente de RH', dept:'RH', admissao:'12/03/2022', status:'Ativo'},
+    {nome:'Camila Ferraz', cargo:'Coordenadora', dept:'Logística', admissao:'04/07/2021', status:'Férias'},
+    {nome:'Rafael Nogueira', cargo:'Sócio-gerente', dept:'Comercial', admissao:'01/01/2019', status:'Férias'},
+    {nome:'Diego Martins', cargo:'Desenvolvedor', dept:'TI', admissao:'20/02/2023', status:'Ativo'},
+    {nome:'Marina Souza', cargo:'Diretora de Operações', dept:'Operações', admissao:'15/06/2020', status:'Ativo'},
+    {nome:'Bruna Lima', cargo:'Analista de RH', dept:'RH', admissao:'02/09/2026', status:'Admissão'},
+    {nome:'Paulo Ricci', cargo:'Assistente Administrativo', dept:'Administrativo', admissao:'—', status:'Desligado'},
+    {nome:'Larissa Prado', cargo:'Analista Financeiro', dept:'Financeiro', admissao:'18/11/2021', status:'Ativo'},
+  ];
+
+  var statusStyle = {
+    'Ativo':'bg-blue-500/10 text-blue-600',
+    'Férias':'bg-ink-950/5 text-ink-700',
+    'Admissão':'bg-blue-500/10 text-blue-600',
+    'Desligado':'bg-red-500/10 text-red-600'
+  };
+
+  function renderFuncionarios(filter){
+    var body = document.getElementById('funcTableBody');
+    body.innerHTML = '';
+    funcionarios
+      .filter(function(f){ return !filter || f.nome.toLowerCase().indexOf(filter.toLowerCase()) !== -1; })
+      .forEach(function(f){
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td class="px-5 py-3.5 font-medium">'+f.nome+'</td>'+
+          '<td class="px-5 py-3.5 text-ink-700">'+f.cargo+'</td>'+
+          '<td class="px-5 py-3.5 text-ink-700">'+f.dept+'</td>'+
+          '<td class="px-5 py-3.5 text-ink-700">'+f.admissao+'</td>'+
+          '<td class="px-5 py-3.5"><span class="text-xs font-medium '+statusStyle[f.status]+' px-2.5 py-1 rounded-full">'+f.status+'</span></td>';
+        body.appendChild(tr);
+      });
+  }
+  renderFuncionarios('');
+  document.getElementById('searchFunc').addEventListener('input', function(e){ renderFuncionarios(e.target.value); });
+
+  var titles = {dashboard:'Dashboard', funcionarios:'Funcionários', ferias:'Férias', documentos:'Documentos'};
+  document.querySelectorAll('.navlink').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.navlink').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      document.getElementById('pageTitle').textContent = titles[btn.dataset.tab];
+    });
+  });
+</script>
+
+</body>
+</html>
